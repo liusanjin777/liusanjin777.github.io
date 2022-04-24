@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>用户登录凭证 | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="cookie session JWT," />
+  
+
+  <meta name="description" content="为什么需要登录凭证？在web开发中，我们使用最多的协议是http，但是http协议是一个无状态的协议  无状态协议：http每次请求都是一个单独的请求，和之前的请求没有关系。  登录凭证cookie+session（被淘汰）cookiecookie 又称为小甜饼，类型为小型文本文件，某些网站为了辨别用户身份而存储在用户本地终端上的数据。  浏览器会在特定的情况下携带cookie来发送请求，我们可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户登录凭证">
+<meta property="og:url" content="http://example.com/2022/04/10/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%87%AD%E8%AF%81/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="为什么需要登录凭证？在web开发中，我们使用最多的协议是http，但是http协议是一个无状态的协议  无状态协议：http每次请求都是一个单独的请求，和之前的请求没有关系。  登录凭证cookie+session（被淘汰）cookiecookie 又称为小甜饼，类型为小型文本文件，某些网站为了辨别用户身份而存储在用户本地终端上的数据。  浏览器会在特定的情况下携带cookie来发送请求，我们可以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-10T01:51:50.000Z">
+<meta property="article:modified_time" content="2022-04-12T06:31:49.070Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content="cookie session JWT">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%99%BB%E5%BD%95%E5%87%AD%E8%AF%81%EF%BC%9F"><span class="toc-text">为什么需要登录凭证？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E5%87%AD%E8%AF%81"><span class="toc-text">登录凭证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-session%EF%BC%88%E8%A2%AB%E6%B7%98%E6%B1%B0%EF%BC%89"><span class="toc-text">cookie+session（被淘汰）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie"><span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Cookie%E7%9A%84%E5%B8%B8%E8%A7%81%E5%B1%9E%E6%80%A7"><span class="toc-text">Cookie的常见属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session"><span class="toc-text">session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">cookie和session的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie-session%E7%9A%84%E6%96%B9%E5%BC%8F%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">cookie+session的方式的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Token%E4%BB%A4%E7%89%8C"><span class="toc-text">Token令牌</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT%E5%AE%9E%E7%8E%B0Token%E6%9C%BA%E5%88%B6%E4%B8%89%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90"><span class="toc-text">JWT实现Token机制三部分组成</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#header"><span class="toc-text">header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#payload"><span class="toc-text">payload</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#signature"><span class="toc-text">signature</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-text">非对称加密</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-用户登录凭证" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">用户登录凭证</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.04.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="为什么需要登录凭证？"><a href="#为什么需要登录凭证？" class="headerlink" title="为什么需要登录凭证？"></a>为什么需要登录凭证？</h2><p>在web开发中，我们使用最多的协议是http，但是http协议是一个无状态的协议</p>
+<ul>
+<li>无状态协议：http每次请求都是一个单独的请求，和之前的请求没有关系。</li>
+</ul>
+<h2 id="登录凭证"><a href="#登录凭证" class="headerlink" title="登录凭证"></a>登录凭证</h2><h3 id="cookie-session（被淘汰）"><a href="#cookie-session（被淘汰）" class="headerlink" title="cookie+session（被淘汰）"></a>cookie+session（被淘汰）</h3><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>cookie 又称为小甜饼，类型为小型文本文件，某些网站为了辨别用户身份而存储在用户本地终端上的数据。</p>
+<ul>
+<li>浏览器会在特定的情况下携带cookie来发送请求，我们可以通过cookie来获取一些用户信息；</li>
+<li>cookie可以分为内存cookie和硬盘cookie</li>
+<li>内存cookie由浏览器维护，保存在内存中，浏览器关闭时Cookie就会消失，其存在时间是短暂的</li>
+<li>硬盘Cookie保存在硬盘中，有一个过期时间，用户手动清理或者过期时间到，才会被清理。<h5 id="Cookie的常见属性"><a href="#Cookie的常见属性" class="headerlink" title="Cookie的常见属性"></a>Cookie的常见属性</h5></li>
+</ul>
+<p>Cookie的生命周期</p>
+<ul>
+<li>expires：设置的是Date.toUTCString(),设置格式是：expires = date-in-GMTString-format</li>
+<li>max-age: 设置过期的秒钟：max-age = 60 * 60 * 24 * 365 (一年)</li>
+</ul>
+<p>Cookie的作用域：</p>
+<ul>
+<li>Domain：指定哪些主机可以接受cookie，如果不指定，默认为origin，不包括子域名（以<a target="_blank" rel="noopener" href="http://www.baidu.com为例,tieba.baidu.com为子域名);如果指定为domain,则包含子域名./">www.baidu.com为例，tieba.baidu.com为子域名）；如果指定为domain，则包含子域名。</a></li>
+<li>Path：指定主机下面哪些路径可以接受cookie </li>
+</ul>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>Session 代表着服务器和客户端一次会话的过程。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当客户端关闭会话，或者 Session 超时失效时会话结束。</p>
+<h4 id="cookie和session的区别"><a href="#cookie和session的区别" class="headerlink" title="cookie和session的区别"></a>cookie和session的区别</h4><ul>
+<li>作用范围不同，Cookie 保存在客户端（浏览器），Session 保存在服务器端。</li>
+<li>存取方式的不同，Cookie 只能保存 ASCII，Session 可以存任意数据类型，一般情况下，我们可以在 Session 中保持一些常用变量信息，比如说 UserId 等。</li>
+<li>有效期不同，Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭或者 Session 超时都会失效。</li>
+<li>隐私策略不同，Cookie 存储在客户端，比较容易遭到不法获取，早期有人将用户的登录名和密码存储在 Cookie 中导致信息被窃取；Session 存储在服务端，安全性相对 Cookie 要好一些。</li>
+<li>存储大小不同， 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie。</li>
+</ul>
+<h4 id="cookie-session的方式的缺点"><a href="#cookie-session的方式的缺点" class="headerlink" title="cookie+session的方式的缺点"></a>cookie+session的方式的缺点</h4><ul>
+<li>Cookie会被附加在每个HTTP请求中，所以无形中增加了流量（事实上某些请求是不需要的）；</li>
+<li>Cookie是明文传递的，所以存在安全性的问题；</li>
+<li>Cookie的大小限制是4KB，对于复杂的需求来说是不够的；</li>
+<li>对于浏览器外的其他客户端（比如iOS、Android），必须手动的设置cookie和session；</li>
+<li>对于分布式系统和服务器集群中如何可以保证其他系统也可以正确的解析session？</li>
+</ul>
+<h3 id="Token令牌"><a href="#Token令牌" class="headerlink" title="Token令牌"></a>Token令牌</h3><h4 id="JWT实现Token机制三部分组成"><a href="#JWT实现Token机制三部分组成" class="headerlink" title="JWT实现Token机制三部分组成"></a>JWT实现Token机制三部分组成</h4><h5 id="header"><a href="#header" class="headerlink" title="header"></a>header</h5><ul>
+<li><p>alg：加密采用的算法，默认是HMAC SHA256，采用同一个密钥进行加密和解密；</p>
+</li>
+<li><p>typ：JWT，固定值；</p>
+</li>
+<li><p>会通过base54Url算法进行编码；</p>
+</li>
+<li><h5 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h5></li>
+<li><p>携带的数据，比如我们可以将用户的id和name放到payload中；</p>
+</li>
+<li><p>默认也会携带iat（issued at），令牌的签发时间；</p>
+</li>
+<li><p>我们也可以设置过期时间：exp（expiration time）；</p>
+</li>
+<li><p>会通过base64Url算法进行编码</p>
+</li>
+</ul>
+<h5 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h5><ul>
+<li>设置一个secretKey，通过将前两个的结果合并后进行HMACSHA256的算法；</li>
+<li>HMACSHA256(base64Url(header)+.+base64Url(payload), secretKey);</li>
+<li>但是如果secretKey暴露是一件非常危险的事情，因为之后就可以模拟颁发token，<br>也可以解密token；</li>
+</ul>
+<h4 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h4><p>前面我们说过，HS256加密算法一单密钥暴露就是非常危险的事情：</p>
+<ul>
+<li>比如在分布式系统中，每一个子系统都需要获取到密钥；</li>
+<li>那么拿到这个密钥后这个子系统既可以发布另外，也可以验证令牌；</li>
+<li>但是对于一些资源服务器来说，它们只需要有验证令牌的能力就可以了；<br>这个时候我们可以使用非对称加密，RS256：</li>
+<li>私钥（private key）：用于发布令牌；</li>
+<li>公钥（public key）：用于验证令牌；<br>我们可以使用openssl来生成一对私钥和公钥：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl</span><br><span class="line">&gt; genrsa -out private.key <span class="number">1024</span> <span class="comment">//生成私钥</span></span><br><span class="line">&gt; rsa -<span class="keyword">in</span> private.key -pubout -out public.key <span class="comment">//生产共钥</span></span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/02/17/%E7%88%AC%E5%9D%91/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

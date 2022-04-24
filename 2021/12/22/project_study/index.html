@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>project_study | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="front end,js,vue,ts,Developer,Programmer,Coder" />
+  
+
+  <meta name="description" content="滚动加载设置一个 scrollFinished 为false，再设置一个 scrollLoading为 true，当需要滚动加载的时候，将scrollFinished与scrollLoading都设置为true，加载数据，加载完毕后再将其设置回原来的状态。 判断样式active的激活1234567 headerNavActive: &amp;#123;        get: function() &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="project_study">
+<meta property="og:url" content="http://example.com/2021/12/22/project_study/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="滚动加载设置一个 scrollFinished 为false，再设置一个 scrollLoading为 true，当需要滚动加载的时候，将scrollFinished与scrollLoading都设置为true，加载数据，加载完毕后再将其设置回原来的状态。 判断样式active的激活1234567 headerNavActive: &amp;#123;        get: function() &amp;#1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-22T11:40:25.000Z">
+<meta property="article:modified_time" content="2022-04-10T01:31:31.048Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content=" front end,js,vue,ts,Developer,Programmer,Coder">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%9A%E5%8A%A8%E5%8A%A0%E8%BD%BD"><span class="toc-text">滚动加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%B7%E5%BC%8Factive%E7%9A%84%E6%BF%80%E6%B4%BB"><span class="toc-text">判断样式active的激活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FormData-append"><span class="toc-text">FormData.append()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8let-that-this-%E6%9D%A5%E6%93%8D%E4%BD%9C%E5%9C%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E9%87%8C%E9%9D%A2%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">利用let that&#x3D;this 来操作在箭头函数里面的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%AE%A1%E7%AE%97%E7%9A%84%E6%96%B9%E6%B3%95%E4%BC%9A%E6%94%BE%E5%9C%A8vue%E4%B8%AD%E7%9A%84computed%E4%B8%AD%EF%BC%88computed%E4%B8%8Ewatch%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-text">关于计算的方法会放在vue中的computed中（computed与watch的区别）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-all-iterable-%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA-Promise-%E5%AE%9E%E4%BE%8B"><span class="toc-text">Promise.all(iterable) 方法返回一个 Promise 实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E4%B8%ADref%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">vue中ref的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-keys-%E7%94%A8%E4%BA%8E%E8%8E%B7%E5%BE%97%E7%94%B1%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%90%8D%E7%BB%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-text">Object.keys()用于获得由对象属性名组成的数组</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-project_study" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">project_study</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.12.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="滚动加载"><a href="#滚动加载" class="headerlink" title="滚动加载"></a>滚动加载</h2><p>设置一个 <code>scrollFinished</code> 为<code>false</code>，再设置一个 <code>scrollLoading</code>为 <code>true</code>，当需要滚动加载的时候，将<code>scrollFinished</code>与<code>scrollLoading</code>都设置为<code>true</code>，加载数据，加载完毕后再将其设置回原来的状态。</p>
+<h2 id="判断样式active的激活"><a href="#判断样式active的激活" class="headerlink" title="判断样式active的激活"></a>判断样式active的激活</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attr">headerNavActive</span>: &#123;</span><br><span class="line">        <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">const</span> returnVal = <span class="built_in">this</span>.$route.path.indexOf(<span class="string">&#x27;/training/project&#x27;</span>) &gt; <span class="number">0</span> ? <span class="number">0</span> : <span class="number">1</span>  <span class="comment">//利用路由的索引值判断样式active激活</span></span><br><span class="line">          <span class="keyword">return</span> returnVal</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="FormData-append"><a href="#FormData-append" class="headerlink" title="FormData.append()"></a>FormData.append()</h2><p>向 FormData 中添加新的属性值，FormData 对应的属性值存在也不会覆盖原值，而是新增一个值，如果属性不存在则新增一项属性值。</p>
+<h2 id="利用let-that-this-来操作在箭头函数里面的数据"><a href="#利用let-that-this-来操作在箭头函数里面的数据" class="headerlink" title="利用let that=this 来操作在箭头函数里面的数据"></a>利用<code>let that=this</code> 来操作在箭头函数里面的数据</h2><h2 id="关于计算的方法会放在vue中的computed中（computed与watch的区别）"><a href="#关于计算的方法会放在vue中的computed中（computed与watch的区别）" class="headerlink" title="关于计算的方法会放在vue中的computed中（computed与watch的区别）"></a>关于计算的方法会放在vue中的<code>computed</code>中（<code>computed</code>与<code>watch</code>的区别）</h2><ul>
+<li>computed 是基于响应性依赖来进行缓存的。只有依赖数据发生改变，才会重新进行计算（当触发重新渲染，若依赖数据没有改变，则 computed 不会重新计算）。若没改变，计算属性会立即返回之前缓存的计算结果。</li>
+<li>watch不支持缓存，数据变或者触发重新渲染时，直接会触发相应的操作。</li>
+<li>watch 支持异步</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多时，一般用 watch。</li>
+<li>omputed 只有当依赖的数据变化时才会计算, 会缓存数据。</li>
+<li>watch 每次都需要执行函数。watch 更适用于数据变化时的异步操作。</li>
+</ul>
+<h2 id="Promise-all-iterable-方法返回一个-Promise-实例"><a href="#Promise-all-iterable-方法返回一个-Promise-实例" class="headerlink" title="Promise.all(iterable) 方法返回一个 Promise 实例"></a><code>Promise.all(iterable)</code> 方法返回一个 Promise 实例</h2><p><code>Promise.all(iterable)</code>方法返回一个 <code>Promise</code> 实例，此实例在 iterable 参数内所有的 <code>promise</code> 都完成 <code>resolved</code> 或参数中不包含 <code>promise</code> 时回调完成 <code>resolve</code>；如果参数中  <code>promise</code> 有<code>rejected</code>，此实例回调失败 <code>reject</code>，失败原因的是第一个失败 <code>promise</code> 的结果。</p>
+<h2 id="vue中ref的使用"><a href="#vue中ref的使用" class="headerlink" title="vue中ref的使用"></a>vue中ref的使用</h2><p><code>ref</code>被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 <code>$refs</code>对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向该子组件实例，通俗的讲，ref特性就是为元素或子组件赋予一个ID引用,通过<code>this.$refs.refName</code>来访问元素或子组件的实例</p>
+<h2 id="Object-keys-用于获得由对象属性名组成的数组"><a href="#Object-keys-用于获得由对象属性名组成的数组" class="headerlink" title="Object.keys()用于获得由对象属性名组成的数组"></a><code>Object.keys()</code>用于获得由对象属性名组成的数组</h2>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/12/22/nodejs/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/12/22/handle-git/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>css | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="front end,js,vue,ts,Developer,Programmer,Coder" />
+  
+
+  <meta name="description" content="cssmagin 如果 margin 属性有四个值：margin: 25px 50px 75px 100px;上外边距是 25px右外边距是 50px下外边距是 75px左外边距是 100px  padding 如果 padding 属性有四个值：padding: 25px 50px 75px 100px;上内边距是 25px右内边距是 50px下内边距是 75px左内边距是 100px  css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css">
+<meta property="og:url" content="http://example.com/2021/12/22/css/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="cssmagin 如果 margin 属性有四个值：margin: 25px 50px 75px 100px;上外边距是 25px右外边距是 50px下外边距是 75px左外边距是 100px  padding 如果 padding 属性有四个值：padding: 25px 50px 75px 100px;上内边距是 25px右内边距是 50px下内边距是 75px左内边距是 100px  css">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-22T11:40:25.000Z">
+<meta property="article:modified_time" content="2021-12-22T11:40:46.000Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content=" front end,js,vue,ts,Developer,Programmer,Coder">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#css"><span class="toc-text">css</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#magin"><span class="toc-text">magin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#padding"><span class="toc-text">padding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%B8%AD%E7%9A%84-gt"><span class="toc-text">css中的 , &gt; + ~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sass%E5%AD%A6%E4%B9%A0"><span class="toc-text">sass学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-text">css伪元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%83%B3%E4%B8%8D%E5%88%B0%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">css中一些想不到的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index"><span class="toc-text">z-index</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-css" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">css</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.12.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><h2 id="magin"><a href="#magin" class="headerlink" title="magin"></a>magin</h2><ul>
+<li>如果 margin 属性有四个值：<br><code>margin: 25px 50px 75px 100px;</code><br>上外边距是 <code>25px</code><br>右外边距是 <code>50px</code><br>下外边距是 <code>75px</code><br>左外边距是 <code>100px</code></li>
+</ul>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><ul>
+<li>如果 padding 属性有四个值：<br><code>padding: 25px 50px 75px 100px;</code><br>上内边距是 <code>25px</code><br>右内边距是 <code>50px</code><br>下内边距是 <code>75px</code><br>左内边距是 <code>100px</code></li>
+</ul>
+<h2 id="css中的-gt"><a href="#css中的-gt" class="headerlink" title="css中的 , &gt; + ~"></a>css中的 , &gt; + ~</h2><ul>
+<li>1、群组选择器（’,’）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* h1 和 h2 有一个被用来作为类名就可以上样式*/</span></span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span> &#123; </span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2、后代选择器（空格）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 表示 h1 下面的所有 span 元素，不管是否以 h1 为直接父元素 */</span></span><br><span class="line"><span class="selector-tag">h1</span> <span class="selector-tag">span</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3、子元素选择器（’&gt;’）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 表示 h1 下面的所有以 h1 为直接父元素的 span 元素，注意必须以 h1 为直接父元素 */</span></span><br><span class="line"><span class="selector-tag">h1</span> &gt; <span class="selector-tag">span</span> &#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4、相邻兄弟选择器（’+’）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">ul</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">1</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">2</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">3</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line"> &lt;/<span class="selector-tag">ul</span>&gt;</span><br><span class="line"> &lt;<span class="selector-tag">ol</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">1</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">2</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line">   &lt;<span class="selector-tag">li</span>&gt;List item <span class="number">3</span>&lt;/<span class="selector-tag">li</span>&gt;</span><br><span class="line"> &lt;/<span class="selector-tag">ol</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5、兄弟选择器（’~’）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* A之后的所有B元素，不一定要紧跟在A后面、相同父元素 */</span></span><br><span class="line"><span class="selector-tag">A</span> ~ <span class="selector-tag">B</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sass学习"><a href="#sass学习" class="headerlink" title="sass学习"></a>sass学习</h2><ul>
+<li>&amp; 表示嵌套的上一级</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">    &amp; &gt;<span class="selector-tag">li</span> &#123;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">/* 与下面等价 */</span></span><br><span class="line"><span class="selector-tag">ul</span>&#123;<span class="attribute">margin-bottom</span>: <span class="number">20px</span>;&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &#123;<span class="attribute">margin-bottom</span>: <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="css伪元素"><a href="#css伪元素" class="headerlink" title="css伪元素"></a>css伪元素</h2><p>CSS 伪元素用于设置元素指定部分的样式。可用于：</p>
+<ul>
+<li>设置元素的首字母、首行的样式<br><code>::first-line</code>：用于向文本的首行添加特殊样式<br><code>::first-letter</code>：用于向文本的首字母（中文是首个字，英文是第一个字母）添加样式  </li>
+<li>在元素的内容之前或之后插入内容<br><code>::before</code> 伪元素可用于在元素内容之前插入一些内容。<br><code>::after</code> 伪元素可用于在元素内容之后插入一些内容。  </li>
+<li><code>::selection</code> 伪元素匹配用户选择的元素部分  </li>
+<li>注意：<br>伪类对象要配合content属性一起使用<br>伪类对象不会出现在DOM中，所以不能通过js来操作，仅仅是在 CSS 渲染层加入<br>伪类对象的特效通常要使用:hover伪类样式来激活</li>
+</ul>
+<h2 id="css中一些想不到的属性"><a href="#css中一些想不到的属性" class="headerlink" title="css中一些想不到的属性"></a>css中一些想不到的属性</h2><h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><ul>
+<li>用与提高图层等级<br><code>z-index : 1</code>会覆盖一起的图层</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/12/22/es-module/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/12/22/brower/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

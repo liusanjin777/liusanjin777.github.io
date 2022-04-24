@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>express框架 | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="front end,js,vue,ts,Developer,Programmer,Coder" />
+  
+
+  <meta name="description" content="认识express 安装express—npm install -g express-generator 创建项目—express workName 安装依赖—npm install 启动项目—node bin&#x2F;www  中间件（核心） 就是一个回调函数 express本质上事一系列中间件的调用 中间件的本质事转递express的一个回调函数这个回调函数接受三个参数：请求对象（request）、响">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express框架">
+<meta property="og:url" content="http://example.com/2022/01/13/express%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="认识express 安装express—npm install -g express-generator 创建项目—express workName 安装依赖—npm install 启动项目—node bin&#x2F;www  中间件（核心） 就是一个回调函数 express本质上事一系列中间件的调用 中间件的本质事转递express的一个回调函数这个回调函数接受三个参数：请求对象（request）、响">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-13T12:09:25.000Z">
+<meta property="article:modified_time" content="2022-02-10T06:30:42.000Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content=" front end,js,vue,ts,Developer,Programmer,Coder">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86express"><span class="toc-text">认识express</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%88%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="toc-text">中间件（核心）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-text">中间件执行的任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">应用中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E6%99%AE%E9%80%9A%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">最普通的中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">路径匹配中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%92%8C%E6%96%B9%E6%B3%95%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">路径和方法中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%BF%9E%E7%BB%AD%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">注册连续中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">中间件的应用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#express%E8%B7%AF%E7%94%B1"><span class="toc-text">express路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E5%9B%9E%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">传回静态资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#express%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">express的错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exxpress%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3"><span class="toc-text">exxpress源码理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8express-%E5%88%B0%E5%BA%95%E5%88%9B%E5%BB%BA%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">调用express()到底创建的是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#app-listen-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">app.listen()启动服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#app-use-%E4%B8%AD%E9%97%B4%E4%BB%B6-%E5%86%85%E9%83%A8%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">app.use(中间件)内部到底发生了什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8F%91%E9%80%81%E4%BA%86%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%EF%BC%8C%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%9B%9E%E8%B0%83%E7%9A%84"><span class="toc-text">用户发送了一个网络请求，中间件是如何被回调的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#next%E4%B8%BA%E4%BB%80%E4%B9%88%E6%89%A7%E8%A1%8C%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">next为什么执行下一个中间件</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-express框架" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">express框架</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.01.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="认识express"><a href="#认识express" class="headerlink" title="认识express"></a>认识express</h2><ul>
+<li>安装express—<code>npm install -g express-generator</code></li>
+<li>创建项目—<code>express workName</code></li>
+<li>安装依赖—<code>npm install</code></li>
+<li>启动项目—<code>node bin/www</code></li>
+</ul>
+<h3 id="中间件（核心）"><a href="#中间件（核心）" class="headerlink" title="中间件（核心）"></a>中间件（核心）</h3><ul>
+<li>就是一个回调函数</li>
+<li>express本质上事一系列中间件的调用</li>
+<li>中间件的本质事转递express的一个回调函数<br>这个回调函数接受三个参数：请求对象（request）、响应对象(response)、next函数(在express中定义的用于执行下一个中间件的函数)</li>
+</ul>
+<h4 id="中间件执行的任务"><a href="#中间件执行的任务" class="headerlink" title="中间件执行的任务"></a>中间件执行的任务</h4><ul>
+<li>执行任何代码</li>
+<li>更改请求(request)和响应(response)对象</li>
+<li>结束请求-响应周期（返回数据）</li>
+<li>调用栈中的下一个中间件</li>
+<li>如果当前中间件功能没有接受请求-响应周期，则必须调用next()将控制权传递给下一个中间件，否则请求将会被挂起</li>
+</ul>
+<h4 id="应用中间件"><a href="#应用中间件" class="headerlink" title="应用中间件"></a>应用中间件</h4><ul>
+<li>app/router.use and app/router.methods</li>
+<li>app.methods ===&gt; app.get and app.post…</li>
+</ul>
+<h5 id="最普通的中间件"><a href="#最普通的中间件" class="headerlink" title="最普通的中间件"></a>最普通的中间件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">//使用use的方式注册中间件</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  next()</span><br><span class="line">  res.end(<span class="string">&#x27;common middleware&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="路径匹配中间件"><a href="#路径匹配中间件" class="headerlink" title="路径匹配中间件"></a>路径匹配中间件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">//使用use的方式注册中间件</span></span><br><span class="line">app.use(<span class="string">&#x27;/home&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;enter home&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="路径和方法中间件"><a href="#路径和方法中间件" class="headerlink" title="路径和方法中间件"></a>路径和方法中间件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">//使用use的方式注册中间件</span></span><br><span class="line">app.get(<span class="string">&#x27;/home&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;path and method for home&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="注册连续中间件"><a href="#注册连续中间件" class="headerlink" title="注册连续中间件"></a>注册连续中间件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">//使用use的方式注册中间件</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;01&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.get(<span class="string">&#x27;/home&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;02-1&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;02-2&#x27;</span>)</span><br><span class="line">  next() </span><br><span class="line">&#125;, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;02-3&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;02-4&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="中间件的应用"><a href="#中间件的应用" class="headerlink" title="中间件的应用"></a>中间件的应用</h5><ul>
+<li>一. 自己编写中间件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(<span class="function">(<span class="params">req, res. next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.headers[<span class="string">&#x27;content-type&#x27;</span>] === <span class="string">&#x27;application/json&#x27;</span>) &#123;</span><br><span class="line">    req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> info = <span class="built_in">JSON</span>.parse(data.toString())</span><br><span class="line">    &#125;)</span><br><span class="line">    req.body = &#123;&#125;;</span><br><span class="line">    req.body = <span class="built_in">Object</span>.assgin(&#123;&#125;, info);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// req.on(&#x27;data&#x27;, (data) =&gt; &#123;</span></span><br><span class="line">  <span class="comment">//   console.log(data.toString())</span></span><br><span class="line">  <span class="comment">// &#125;)</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.body)</span><br><span class="line">  res.end(<span class="string">&#x27;welcome back ~&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>二. 使用express内置中间件—<code>body-parser</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json());</span><br><span class="line"><span class="comment">//extended为true时使用第三方库：qs</span></span><br><span class="line"><span class="comment">//extended为false时使用Node内置模块：querystring</span></span><br><span class="line">app.use(express.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">true</span>&#125;));</span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.body)</span><br><span class="line">  res.end(<span class="string">&#x27;welcome back ~&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>三. from-data解析</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装官方的第三方库---multer</span></span><br><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">&#x27;multer&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> upload = multer()</span><br><span class="line">app.use(upload.any());</span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>, <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.body)</span><br><span class="line">  res.end(<span class="string">&#x27;welcome back ~&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>四. from-data文件上传</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">&#x27;multer&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> upload = multer(&#123;</span><br><span class="line">  <span class="attr">dest</span>: <span class="string">&#x27;./uploads/&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 自定义路径和文件名</span></span><br><span class="line"><span class="comment">// const upload = multer(&#123;</span></span><br><span class="line"><span class="comment">//   storage</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">// const storage = multer.diskStorage(&#123;</span></span><br><span class="line"><span class="comment">//   destination: (req, file, callback) =&gt; &#123;</span></span><br><span class="line"><span class="comment">//     callback(null, &#x27;./uploads/&#x27;)</span></span><br><span class="line"><span class="comment">//   &#125;,</span></span><br><span class="line"><span class="comment">//   filename:(req, file, callback) =&gt; &#123;</span></span><br><span class="line"><span class="comment">//     callback(null, &#x27;foo.png&#x27;)</span></span><br><span class="line"><span class="comment">//   &#125;,</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">// app.use(upload.any());  注意：不要将multer作为全局中间件使用</span></span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>,upload.any(), <span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.end(<span class="string">&#x27;welcome back ~&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">app.post(<span class="string">&#x27;/upload&#x27;</span>, upload.single(<span class="string">&#x27;key&#x27;</span>),<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.files)</span><br><span class="line">  res.end(<span class="string">&#x27;upload success!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="string">&#x27;8080&#x27;</span>,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;服务器启动成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>requset参数解析</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.get(<span class="string">&#x27;users/:id&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.params);</span><br><span class="line">  res.end(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;);</span><br><span class="line">app.get(<span class="string">&#x27;login&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.query);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>response响应结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.get(<span class="string">&#x27;login&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.status(<span class="number">200</span>) <span class="comment">//设置响应码</span></span><br><span class="line">  <span class="comment">// 返回数据第一种方法</span></span><br><span class="line">  <span class="comment">// res.type(&#x27;application/json&#x27;)</span></span><br><span class="line">  <span class="comment">// res.end(JSON.stringify(&#123;name:&quot;zhangsan&quot;,age:18&#125;))</span></span><br><span class="line">  <span class="comment">//第二种方法(用的最多)</span></span><br><span class="line">  res.json(&#123;<span class="attr">name</span>:<span class="string">&quot;zhangsan&quot;</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;)</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="express路由"><a href="#express路由" class="headerlink" title="express路由"></a>express路由</h3><p><strong>例子</strong>:</p>
+<ul>
+<li>请求所有用户信息：get/users</li>
+<li>请求某个用户信息：get/users/:id</li>
+<li>修改某个用户信息：post/users body {username:xx,password:xxx}</li>
+<li>删除用户信息：delete/users/:id</li>
+</ul>
+<p>创建一个users.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> router = express(<span class="string">&#x27;router&#x27;</span>);</span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.json([<span class="string">&quot;zhangsan&quot;</span>,<span class="string">&quot;lisi&quot;</span>,<span class="string">&quot;kobe&quot;</span>,<span class="string">&quot;curry&quot;</span>])</span><br><span class="line">&#125;);</span><br><span class="line">router.get(<span class="string">&#x27;/:id&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.json(<span class="string">`<span class="subst">$&#123;req.params.id&#125;</span>用户的信息`</span>)</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+
+<p>使用user.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> useRouter = <span class="built_in">require</span>(<span class="string">&#x27;./router/users&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.user(<span class="string">&quot;/users&quot;</span>,useRouter)</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="传回静态资源"><a href="#传回静态资源" class="headerlink" title="传回静态资源"></a>传回静态资源</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.use(express.static(<span class="string">&#x27;./dist&#x27;</span>))</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="express的错误处理"><a href="#express的错误处理" class="headerlink" title="express的错误处理"></a>express的错误处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.query.username === <span class="string">&quot;xxx&quot;</span> &amp;&amp; req.query.passwrod === <span class="string">&quot;xxx&quot;</span>) &#123;</span><br><span class="line">    res.status(<span class="number">200</span>);</span><br><span class="line">    res.json(<span class="string">&quot;登录成功！&quot;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next(<span class="keyword">new</span> <span class="built_in">Error</span>(USERNAME_DOES_EXISTS));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.post(<span class="string">&#x27;/register&#x27;</span>,<span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.query.username !== <span class="string">&quot;xxx&quot;</span>) &#123;</span><br><span class="line">    res.status(<span class="number">200</span>);</span><br><span class="line">    res.json(<span class="string">&quot;注册成功！&quot;</span>)；</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next(<span class="keyword">new</span> <span class="built_in">Error</span>(USERNAME_ALREADY_EXISTS));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> status = <span class="number">400</span>;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">switch</span> (err.message) &#123;</span><br><span class="line">    <span class="keyword">case</span> USERNAME_DOES_EXISTS:</span><br><span class="line">      message = <span class="string">&quot;登录失败！&quot;</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> USERNAME_ALREADY_EXISTS:</span><br><span class="line">      message = <span class="string">&quot;注册失败！&quot;</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span></span><br><span class="line">      message = <span class="string">&quot;Not Found!&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  res.status(status);</span><br><span class="line">  res.json(message)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">8000</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="exxpress源码理解"><a href="#exxpress源码理解" class="headerlink" title="exxpress源码理解"></a>exxpress源码理解</h3><h4 id="调用express-到底创建的是什么"><a href="#调用express-到底创建的是什么" class="headerlink" title="调用express()到底创建的是什么"></a>调用express()到底创建的是什么</h4><ul>
+<li><code>exports = module.exports = createApplication;</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createApplication</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> app = <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    app.handle(req, res, next);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="app-listen-启动服务器"><a href="#app-listen-启动服务器" class="headerlink" title="app.listen()启动服务器"></a>app.listen()启动服务器</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.listen = <span class="function"><span class="keyword">function</span> <span class="title">listen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> server = http.createServer(<span class="built_in">this</span>); <span class="comment">//this就是app</span></span><br><span class="line">  <span class="keyword">return</span> server.listen.apply(server, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="app-use-中间件-内部到底发生了什么"><a href="#app-use-中间件-内部到底发生了什么" class="headerlink" title="app.use(中间件)内部到底发生了什么"></a>app.use(中间件)内部到底发生了什么</h4><p>1</p>
+<h4 id="用户发送了一个网络请求，中间件是如何被回调的"><a href="#用户发送了一个网络请求，中间件是如何被回调的" class="headerlink" title="用户发送了一个网络请求，中间件是如何被回调的"></a>用户发送了一个网络请求，中间件是如何被回调的</h4><h4 id="next为什么执行下一个中间件"><a href="#next为什么执行下一个中间件" class="headerlink" title="next为什么执行下一个中间件"></a>next为什么执行下一个中间件</h4>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/01/06/http%E5%8E%9F%E7%94%9F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2022/02/08/less-study/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

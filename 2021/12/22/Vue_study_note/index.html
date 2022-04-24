@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue2 | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,css," />
+  
+
+  <meta name="description" content="路由守卫全局前置路由守卫 守护路由的安全（权限）  router.beforeEach(callback) callback在跳转路由之前会调用 callback在初始化的时候会调用  123router.beforeEach((to,from,next)&#x3D;&gt;&amp;#123;    next（）&amp;#125;)    to：去哪个组件     from：来自哪个组件     next：放行  可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2">
+<meta property="og:url" content="http://example.com/2021/12/22/Vue_study_note/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="路由守卫全局前置路由守卫 守护路由的安全（权限）  router.beforeEach(callback) callback在跳转路由之前会调用 callback在初始化的时候会调用  123router.beforeEach((to,from,next)&#x3D;&gt;&amp;#123;    next（）&amp;#125;)    to：去哪个组件     from：来自哪个组件     next：放行  可以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-22T11:40:25.000Z">
+<meta property="article:modified_time" content="2021-12-22T12:02:30.000Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content="vue,css">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">路由守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">全局前置路由守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%90%8E%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">全局后置路由守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E4%BA%AB%E5%AE%88%E5%8D%AB"><span class="toc-text">独享守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%86%85%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">组件内路由守卫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E6%A7%BD"><span class="toc-text">插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD"><span class="toc-text">默认插槽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="toc-text">具名插槽</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">ref的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E4%B8%ADmvvm%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">vue中mvvm的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prop%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">prop的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#emit%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">emit的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2%E5%B0%8F%E5%9D%91"><span class="toc-text">vue2小坑</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Vue_study_note" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Vue2</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.12.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h2><h3 id="全局前置路由守卫"><a href="#全局前置路由守卫" class="headerlink" title="全局前置路由守卫"></a>全局前置路由守卫</h3><ul>
+<li>守护路由的安全（权限）  <code>router.beforeEach(callback)</code></li>
+<li><code>callback</code>在跳转路由之前会调用</li>
+<li><code>callback</code>在初始化的时候会调用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to,<span class="keyword">from</span>,next</span>)=&gt;</span>&#123;</span><br><span class="line">    next（）</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+
+<p> to：去哪个组件     from：来自哪个组件     next：放行</p>
+<ul>
+<li>可以在路由文件中配置meta（路由元信息）属性 来判断一个组件是否需要校验</li>
+</ul>
+<h3 id="全局后置路由守卫"><a href="#全局后置路由守卫" class="headerlink" title="全局后置路由守卫"></a>全局后置路由守卫</h3><ul>
+<li><code>router.afterEach(callback)</code>     可以用来改变页面的title值</li>
+<li><code>callback</code>在跳转路由之后会调用</li>
+<li>`callback``在初始化的时候会调用</li>
+<li><code>router.beforeEach((to,from)=&gt;&#123;&#125;)</code><br>to：去哪个组件     from：来自哪个组件     无next参数</li>
+</ul>
+<h3 id="独享守卫"><a href="#独享守卫" class="headerlink" title="独享守卫"></a>独享守卫</h3><ul>
+<li><code>beforeEnter：(to,from,next)=&gt;&#123; &#125;</code><br>独享路由守卫只有前置没有后置</li>
+</ul>
+<h3 id="组件内路由守卫"><a href="#组件内路由守卫" class="headerlink" title="组件内路由守卫"></a>组件内路由守卫</h3><ul>
+<li><code>beforeRouteEnter (to,from,next)&#123;&#125;</code>   通过路由规则进入的组件，在进入之前调用</li>
+<li><code>beforeRouteLeave (to,from,next)&#123;&#125;</code>  通过路由规则离开的组件，在离开之前调用</li>
+</ul>
+<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><h3 id="默认插槽"><a href="#默认插槽" class="headerlink" title="默认插槽"></a>默认插槽</h3><p>使用组件时<code>&lt;component&gt;  hhhhh&lt;/component&gt;</code>，然后再component中hhh中改放入的地方<code>&lt;slot&gt;我是默认语句，当hhh为无的时候我就会出现&lt;/slot&gt;</code><br>使用多个插槽时，可以再<code>&lt;component   slot=&quot;xxx&quot;&gt;</code>   然后再编辑<code>&lt;slot  name=&quot;xxx&quot;&gt;</code></p>
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><p>在template中使用<code>v-slot:xxxx</code><br>作用域插槽：数据在组件额自身，但根据数据生成的结构需要组件的使用者来决定。（games数据在Category组件中，但是用数据所便利出来的结构由父组件决定）</p>
+<h2 id="ref的使用"><a href="#ref的使用" class="headerlink" title="ref的使用"></a>ref的使用</h2><ul>
+<li>1、ref 加在普通的元素上，用<code>this.ref.name</code>获取到的是dom元素</li>
+<li>2、ref 加在子组件上，用<code>this.ref.name</code> 获取到的是子组件实例，可以使用子组件的所有方法。</li>
+<li>3、如何利用 v-for 和 ref 获取一组数组或者dom 节点</li>
+</ul>
+<h2 id="vue中mvvm的理解"><a href="#vue中mvvm的理解" class="headerlink" title="vue中mvvm的理解"></a>vue中mvvm的理解</h2><ul>
+<li>M就是：模型（Model）：数据模型；负责数据存储。泛指后端进行的各种业务逻辑处理和数据操控，主要围绕数据库系统展开。</li>
+<li>V就是：View 视图，负责页面展示，也就是用户界面。主要由 HTML 和 CSS 来构建</li>
+<li>VM就是：视图模型（View-Model）：负责业务逻辑处理（比如Ajax请求等），对数据进行加工后交给视图展示</li>
+<li>通过vue类创建的对象叫Vue实例化对象，这个对象就是MVVM模式中的VM层，模型通过它可以将数据绑定到页面上，视图可以通过它将数据映射到模型上</li>
+<li>ViewModel 是由前端开发人员组织生成和维护的视图数据层。在这一层，前端开发者对从后端获取的 Model 数据进行转换处理，做二次封装，以生成符合 View 层使用预期的视图数据模型。</li>
+</ul>
+<h2 id="prop的使用"><a href="#prop的使用" class="headerlink" title="prop的使用"></a>prop的使用</h2><ul>
+<li>一般在父组件中通过v-bind定义一个动态值（<code>&lt;child  type=&quot;要传入的值&quot;&gt;&lt;child&gt;</code>），子组件通过Prop接收该值  ( <code>props:[&quot;type&quot;]</code> )</li>
+<li><code>https://blog.csdn.net/qq_37994886/article/details/98742513</code></li>
+<li>如果子组件需要操作Prop中的值，需要将Prop中的值赋值给本地定义的属性</li>
+</ul>
+<h2 id="emit的使用"><a href="#emit的使用" class="headerlink" title="emit的使用"></a>emit的使用</h2><ul>
+<li>子组件可以使用$emit调用父组件的方法并传递数据</li>
+</ul>
+<h2 id="vue2小坑"><a href="#vue2小坑" class="headerlink" title="vue2小坑"></a>vue2小坑</h2><p>vue2中直接利用数组下标(  a[0]=1 ）, 进行修改是改变不了view层的<br>解决方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$nextTick，</span><br><span class="line">vue.set(数组，索引，值)，</span><br><span class="line"><span class="built_in">this</span>.$set(数组，索引，值))</span><br><span class="line">array.splice()</span><br></pre></td></tr></table></figure>
+
+<p>添加对象的属性使用this.obj.a = 1 也是改变不了view层<br>解决方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vue.set(对象，<span class="string">&quot;key&quot;</span>，值)</span><br><span class="line"><span class="built_in">this</span>.$set(对象，<span class="string">&quot;key&quot;</span>，值))</span><br></pre></td></tr></table></figure>
+
+<p>删除对象的属性delete this.obj.a也改变不来view层  </p>
+<p>解决方法：<br><code>this.$delete(对象名，key)</code></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/12/22/Vue3/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/12/24/buffer/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

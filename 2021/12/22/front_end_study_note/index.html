@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>front end study | SANJIN BLOG</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="front end,js,vue,ts,Developer,Programmer,Coder" />
+  
+
+  <meta name="description" content="front endObject.assignde 使用：（浅拷贝） https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f9ec860ecd81 Object.assign可以用来处理数组，但是会把数组视为对象。key是索引值，value是数组值  12Object.assign([1, 2, 3], [4, 5])&#x2F;&#x2F; [4, 5, 3]  上面代码中，Object.assign 把数组视为属性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="front end study">
+<meta property="og:url" content="http://example.com/2021/12/22/front_end_study_note/index.html">
+<meta property="og:site_name" content="SANJIN BLOG">
+<meta property="og:description" content="front endObject.assignde 使用：（浅拷贝） https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f9ec860ecd81 Object.assign可以用来处理数组，但是会把数组视为对象。key是索引值，value是数组值  12Object.assign([1, 2, 3], [4, 5])&#x2F;&#x2F; [4, 5, 3]  上面代码中，Object.assign 把数组视为属性">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-22T11:40:25.000Z">
+<meta property="article:modified_time" content="2021-12-22T11:42:36.000Z">
+<meta property="article:author" content="liu-san-jin">
+<meta property="article:tag" content=" front end,js,vue,ts,Developer,Programmer,Coder">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="SANJIN BLOG" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#front-end"><span class="toc-text">front end</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-assignde-%E4%BD%BF%E7%94%A8%EF%BC%9A%EF%BC%88%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89"><span class="toc-text">Object.assignde 使用：（浅拷贝）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-text">深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import%E5%BC%95%E7%94%A8%E7%9A%84%E4%BC%9A%E5%85%88%E6%89%A7%E8%A1%8C%EF%BC%8C%E6%97%A0%E8%AE%BA%E8%AF%AD%E5%8F%A5%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-text">import引用的会先执行，无论语句的顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#appendChild-%E6%96%B9%E6%B3%95%E5%90%91%E8%8A%82%E7%82%B9%E6%B7%BB%E5%8A%A0%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%AD%90%E8%8A%82%E7%82%B9"><span class="toc-text">appendChild() 方法向节点添加最后一个子节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-text">路径问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E5%80%BC"><span class="toc-text">hash值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-nextTick-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-text">this.$nextTick(回调函数)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-stringify"><span class="toc-text">JSON.stringify()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-split-%E6%96%B9%E6%B3%95"><span class="toc-text">JavaScript split() 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%BF%AE%E6%94%B9%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">js修改原数组的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BC%95%E7%94%A8%E8%B5%8B%E5%80%BC"><span class="toc-text">理解对象的引用赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%9D%A1%E4%BB%B6"><span class="toc-text">三目运算符判断2个条件</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-front_end_study_note" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">front end study</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.12.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>liu-san-jin</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="front-end"><a href="#front-end" class="headerlink" title="front end"></a>front end</h1><h2 id="Object-assignde-使用：（浅拷贝）"><a href="#Object-assignde-使用：（浅拷贝）" class="headerlink" title="Object.assignde 使用：（浅拷贝）"></a>Object.assignde 使用：（浅拷贝）</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f9ec860ecd81">https://www.jianshu.com/p/f9ec860ecd81</a></li>
+<li>Object.assign可以用来处理数组，但是会把数组视为对象。key是索引值，value是数组值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment">// [4, 5, 3]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>Object.assign</code> 把数组视为属性名为 <code>0、1、2</code> 的对象，因此源数组的 <code>0</code> 号属性<code>4</code>覆盖了目标数组的 <code>0</code> 号属性1。</p>
+<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><ul>
+<li>浅拷贝：因为浅复制只会将对象的各个属性进行依次复制，并不会进行递归复制，而<code>JavaScript</code>存储对象都是存地址的，所以浅复制会导致 <code>obj.arr</code> 和 <code>shallowObj.arr</code> 指向同一块内存地址</li>
+<li>深拷贝：它不仅将原对象的各个属性逐个复制出去，而且将原对象各个属性所包含的对象也依次采用深复制的方法递归复制到新对象上。</li>
+<li>赋值符号与拷贝的区别：在对象是引用类型<code>a=b</code>时赋值会将b的内存地址赋值给a，a改变值时，b也会改变。浅拷贝会将b第一层的内存地址与值传给a，a就算改变值，b的第一层也不会改变，但是改变a的更深层的值时，b就会改变；深拷贝无论a怎么改变，都不会影响b的值。</li>
+</ul>
+<h2 id="import引用的会先执行，无论语句的顺序"><a href="#import引用的会先执行，无论语句的顺序" class="headerlink" title="import引用的会先执行，无论语句的顺序"></a><code>import</code>引用的会先执行，无论语句的顺序</h2><h2 id="appendChild-方法向节点添加最后一个子节点"><a href="#appendChild-方法向节点添加最后一个子节点" class="headerlink" title="appendChild() 方法向节点添加最后一个子节点"></a><code>appendChild()</code> 方法向节点添加最后一个子节点</h2><h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><ul>
+<li>“./“：代表目前所在的目录。</li>
+<li>“ . ./“代表上一层目录。</li>
+<li>“/“：代表根目录。电脑中即c，盘，项目中即项目所在的文件夹</li>
+<li>“@/“ ：vue专用，指向src文件夹</li>
+</ul>
+<h2 id="hash值"><a href="#hash值" class="headerlink" title="hash值"></a>hash值</h2><p>所有<code>hash</code>值都不会传给服务器<br><code>hash</code>的兼容性更好一点，<code>history</code>兼容性稍差。（上线后刷新会有问题，由后端解决）</p>
+<h2 id="this-nextTick-回调函数"><a href="#this-nextTick-回调函数" class="headerlink" title="this.$nextTick(回调函数)"></a>this.$nextTick(回调函数)</h2><ul>
+<li>在下一次DOM更新结束后执行其指定的回调</li>
+<li>当改变数据后，要基于更新后 的新DOM进行某些操作时，要在<code>nextTick</code>所指定的回调函数中执行</li>
+</ul>
+<h2 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify()"></a>JSON.stringify()</h2><ul>
+<li><code>JSON.stringify()</code>的作用是将 JavaScript 对象转换为 JSON 字符串，而JSON.parse()可以将JSON字符串转为一个对象。</li>
+<li><code>JSON.parse()</code>需要注意一点，由于此方法是将JSON字符串转换成对象，所以你的字符串必须符合JSON格式，即键值都必须使用双引号包裹</li>
+</ul>
+<h2 id="JavaScript-split-方法"><a href="#JavaScript-split-方法" class="headerlink" title="JavaScript split() 方法"></a>JavaScript split() 方法</h2><ul>
+<li><code>stringObject.split(a,b)</code>  a为一个字符串，表示以a来分隔，b表示希望得到的个数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.split(<span class="string">&quot;&quot;</span>,<span class="number">3</span>))   <span class="comment">//[&#x27;H&#x27;,&#x27;e&#x27;,&#x27;l&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(b.split(<span class="string">&quot;&quot;</span>,<span class="number">3</span>))   <span class="comment">//[&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.split(<span class="string">&quot; &quot;</span>))    <span class="comment">//[&#x27;Hello&#x27;,&#x27;World&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>split</code>不修改原数组</li>
+</ul>
+<h2 id="js修改原数组的方法"><a href="#js修改原数组的方法" class="headerlink" title="js修改原数组的方法"></a>js修改原数组的方法</h2><ul>
+<li>1.sort() 排序</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myfoo =<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a-b;</span><br><span class="line">&#125;</span><br><span class="line">a = [<span class="number">22</span>,<span class="number">1</span>,<span class="number">444</span>,<span class="number">3</span>]</span><br><span class="line"><span class="built_in">console</span>.log(a.sort()) <span class="comment">// [1,22,3,444]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.sort(myfoo <span class="comment">// [1,3,22,444]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.reverse()  颠倒数组</li>
+<li>3.splite() 插入/删除数组</li>
+</ul>
+<p>如果是删除，返回值是被删除的元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">array.splice(start, deleteCount, value, ...)</span><br><span class="line"><span class="comment">//start </span></span><br><span class="line"><span class="comment">//开始插入和(或)删除的数组元素的下标。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//deleteCount </span></span><br><span class="line"><span class="comment">//从start开始，包括start所指的元素在内要删除的元素个数。这个参数是可选的，如果没有指定它，splice()将删除从start开始到原数组结尾的所有元素。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//value, ... </span></span><br><span class="line"><span class="comment">//要插人数组的零个或多个值，从start所指的下标处开始插入。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="built_in">console</span>.log(a.splice(<span class="number">4</span>),a);        <span class="comment">// 返回 [5,6,7,8]; a is [1,2,3,4]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.splice(<span class="number">1</span>,<span class="number">2</span>),a);      <span class="comment">// 返回 [2,3]; a is [1,4]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.splice(<span class="number">1</span>,<span class="number">1</span>),a);      <span class="comment">// 返回 [4]; a is [1]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.splice(<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>),a);  <span class="comment">// 返回 []; a is [1,2,3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4.push()<br>向数组末尾添加一项，返回值是新长度</li>
+<li>5.pop()<br>删除最后一个元素，返回值是数组最后一个元素</li>
+<li>6.shift()<br>在数组开头删除一项数组，返回值是数组第一个元素</li>
+<li>7.unshift()<br>向数组开头添加一项，返回值是新长度</li>
+</ul>
+<h2 id="理解对象的引用赋值"><a href="#理解对象的引用赋值" class="headerlink" title="理解对象的引用赋值"></a>理解对象的引用赋值</h2><ul>
+<li>浅拷贝和引用赋值是一个概念</li>
+</ul>
+<h2 id="三目运算符判断2个条件"><a href="#三目运算符判断2个条件" class="headerlink" title="三目运算符判断2个条件"></a>三目运算符判断2个条件</h2><p>-<code>&#123;&#123;list.status==0 ?"等待付款":(list.status =="1"?"已支付":"已取消")&#125;&#125;</code></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/12/22/git_study/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/12/22/es-module/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
